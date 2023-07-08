@@ -1,0 +1,21 @@
+service: mac-serverless-offline
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+
+plugins:
+  - serverless-offline
+
+custom:
+  serverless-offline:
+    noPrependStageInUrl: true
+
+functions:
+  ping:
+    handler: index.handler
+    events: 
+      - http:
+          path: /ping 
+          method: get
